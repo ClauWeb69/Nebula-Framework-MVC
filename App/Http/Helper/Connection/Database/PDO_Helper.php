@@ -24,8 +24,7 @@ class PDO_Helper {
 
             try {
                 static::$pdo = new PDO($dsn, $this->user, $this->password, $options);
-            } catch (\PDOException $e) {
-                echo "asd";
+            } catch (\PDOException) {
             }
         }
     }
