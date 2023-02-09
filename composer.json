@@ -1,0 +1,16 @@
+{
+    "name": "nebula/mvc",
+    "description": "Framework MVC: fast, clean, intuitive",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Nebula\\Mvc\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ClauWeb"
+        }
+    ],
+    "minimum-stability": "RC"
+}
