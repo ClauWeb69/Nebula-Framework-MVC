@@ -1,3 +1,0 @@
-[2023-02-08T21:34:00.408672+01:00] channel-name.INFO: This is a log! ^_^  [] []
-[2023-02-08T21:34:00.410591+01:00] channel-name.WARNING: This is a log warning! ^_^  [] []
-[2023-02-08T21:34:00.410625+01:00] channel-name.ERROR: This is a log error! ^_^  [] []

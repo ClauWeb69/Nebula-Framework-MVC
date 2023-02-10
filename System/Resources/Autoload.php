@@ -1,7 +1,33 @@
 <?php
-spl_autoload_register(function($class_name){
+function dirCaller($dir = null){
+    $backtrace = debug_backtrace();
+    $calling_file = $backtrace[1]['file'];
+    $calling_dir = dirname($calling_file);
+    if($dir){
+        if (stripos($calling_dir, $dir) !== false)
+            return true;
+        
+        return false;
+    }
+    return $calling_dir;
+}
+function loadControllers ($class_name){
+    if(!dirCaller(DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."Routes".DIRECTORY_SEPARATOR))
+        return;
+
 	$class_name = strtolower($class_name);
-    $path = "..".DIRECTORY_SEPARATOR. "App" .DIRECTORY_SEPARATOR."Http".DIRECTORY_SEPARATOR."{$class_name}.php";
+    $path = "..".DIRECTORY_SEPARATOR. "App" .DIRECTORY_SEPARATOR. "Controllers" .DIRECTORY_SEPARATOR."{$class_name}.php";
+
+    if (file_exists($path)) {
+        require_once realpath($path);
+    }
+}
+function loadHttp ($class_name){
+    if(dirCaller(DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."Routes".DIRECTORY_SEPARATOR))
+        return;
+
+	$class_name = strtolower($class_name);
+    $path = "..".DIRECTORY_SEPARATOR. "App" .DIRECTORY_SEPARATOR. "Http" .DIRECTORY_SEPARATOR."{$class_name}.php";
 
     if (file_exists($path)) {
         require_once realpath($path);
@@ -12,5 +38,8 @@ spl_autoload_register(function($class_name){
             require_once realpath($filename);
         }
     }
-});
+}
+
+spl_autoload_register("loadControllers");
+spl_autoload_register("loadHttp");
 ?>

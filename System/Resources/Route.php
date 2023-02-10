@@ -9,28 +9,28 @@ class Route {
     public function __construct(){
         $this->access = true;
     }
-    private function get($route, $func) {
+    public function get($route, $func) {
         $this->add("GET", $route, $func);
     }
-    private function post($route, $func){
+    public function post($route, $func){
         $this->add("POST", $route, $func);
     }
-    private function delete($route, $func){
+    public function delete($route, $func){
         $this->add("DELETE", $route, $func);
     }
-    private function put($route, $func){
+    public function put($route, $func){
         $this->add( "PUT", $route, $func);
     }
-    private function patch($route, $func){
+    public function patch($route, $func){
         $this->add("PATCH", $route, $func);
     }
-    private function options($route, $func){
+    public function options($route, $func){
         $this->add("OPTIONS", $route, $func);
     }
-    private function any($route, $func){
+    public function any($route, $func){
         $this->add($_SERVER['REQUEST_METHOD'], $route, $func);
     }
-    private function ajax($route, $func){
+    public function ajax($route, $func){
         if (strtolower((string) @$_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
             $this->add($_SERVER['REQUEST_METHOD'], $route, $func);
     }
