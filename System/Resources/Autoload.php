@@ -12,7 +12,7 @@ function dirCaller($dir = null){
     return $calling_dir;
 }
 function loadControllers ($class_name){
-    if(!dirCaller(DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."Routes".DIRECTORY_SEPARATOR))
+    if(!dirCaller(DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."Routes"))
         return;
 
 	$class_name = strtolower($class_name);
@@ -23,7 +23,7 @@ function loadControllers ($class_name){
     }
 }
 function loadHttp ($class_name){
-    if(dirCaller(DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."Routes".DIRECTORY_SEPARATOR))
+    if(dirCaller(DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."Routes"))
         return;
 
 	$class_name = strtolower($class_name);

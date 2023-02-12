@@ -17,6 +17,8 @@
         "ezyang/htmlpurifier": "^4.16",
         "twig/twig": "^3.5",
         "intervention/image": "^2.7",
-        "egulias/email-validator": "^3.2"
+        "egulias/email-validator": "^3.2",
+        "symfony/translation": "^6.0",
+        "monolog/monolog": "^2.9"
     }
 }
