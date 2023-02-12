@@ -1,8 +1,7 @@
 <?php
 class Test{
     function init(){
-        echo "llololol";
-        
+        (new View("prova"))->data(["name" => "Claudio"]);
     }
 }
 

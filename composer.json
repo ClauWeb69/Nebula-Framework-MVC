@@ -14,6 +14,9 @@
     ],
     "minimum-stability": "RC",
     "require": {
-        "ezyang/htmlpurifier": "^4.16"
+        "ezyang/htmlpurifier": "^4.16",
+        "twig/twig": "^3.5",
+        "intervention/image": "^2.7",
+        "egulias/email-validator": "^3.2"
     }
 }

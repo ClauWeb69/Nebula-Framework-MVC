@@ -1,4 +1,5 @@
 <?php
+
 class View
 {
     protected $viewName;
@@ -6,12 +7,16 @@ class View
     protected $data = [];
     protected $html = false;
 
+    protected $view = null;
+
     public function __construct($viewName)
     {
-        $this->viewName = realpath($this->srcDir . $viewName.'.php');
+        $this->viewName = realpath($this->srcDir . $viewName.'.html');
         if (!file_exists($this->viewName)) {
             throw new Exception("File di vista non trovato: ". $this->viewName . PHP_EOL);
         }
+        $loader = new \Twig\Loader\FilesystemLoader(dirname($this->viewName));
+        $this->view = new \Twig\Environment($loader);
     }
 
     
@@ -20,10 +25,8 @@ class View
         if($this->html)
             return;
 
-        extract($this->data);
-        //ob_start();
-        require_once($this->viewName);
-        //$content = ob_get_contents();
+
+        echo $this->view->render(basename($this->viewName), $this->data);
     }
 
 
@@ -33,15 +36,9 @@ class View
         return $this;
         
     }
-    public function html($data = array())
+    public function html()
     {
         $this->html = true;
-        
-        extract($this->data);
-        ob_start();
-        require_once($this->viewName);
-        $content = ob_get_clean();
-
-        return $content;
+        return $this->view->render(basename($this->viewName), $this->data);
     }
 }
