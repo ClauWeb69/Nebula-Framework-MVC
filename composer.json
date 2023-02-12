@@ -12,5 +12,8 @@
             "name": "ClauWeb"
         }
     ],
-    "minimum-stability": "RC"
+    "minimum-stability": "RC",
+    "require": {
+        "ezyang/htmlpurifier": "^4.16"
+    }
 }
